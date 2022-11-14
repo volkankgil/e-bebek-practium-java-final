@@ -8,7 +8,7 @@ import java.util.TreeSet;
 public class main {
     public static void main(String[] args) {
 
-        store patikamaðaza = new store();
-        patikamaðaza.run();
+        store patikaStore = new store();
+        patikaStore.run();
     }
 }

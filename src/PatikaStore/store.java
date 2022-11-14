@@ -9,12 +9,12 @@ public class store {
         int number = 5;
 
         while (number != 0) {
-            System.out.println("Patika Ürün Yönetim Paneli !" + "\n" +
-                    "1 - Notebook Ýþlemleri" + "\n" +
-                    "2 - Cep telefonu Ýþlemleri" + "\n" +
-                    "3 - Markalarý Listele" + "\n" +
-                    "0 - Çýkýþ yap");
-            System.out.println("Seçim Yapýnýz:");
+            System.out.println("Patika Product Management Panel !" + "\n" +
+                    "1 - Notebook Operations" + "\n" +
+                    "2 - Telephone Operations" + "\n" +
+                    "3 - List Brands" + "\n" +
+                    "0 - Exit");
+            System.out.println("Make your choice :");
             number = input.nextInt();
 
             switch (number) {
@@ -22,16 +22,16 @@ public class store {
                     new notebook().menu();
                     break;
                 case 2:
-                    new telefon().menu();
+                    new telephone().menu();
                     break;
                 case 3:
                     new brand().showBrands();
                     break;
                 case 0:
-                    System.out.println("Sistemden çýkýþ yaptýnýz.");
+                    System.out.println("You logged out of the panel.");
                     break;
                 default:
-                    System.out.println("Hatalý seçim yaptýnýz.Tekrar deneyiniz.");
+                    System.out.println("You made the wrong choice. Please try again.");
             }
         }
     }

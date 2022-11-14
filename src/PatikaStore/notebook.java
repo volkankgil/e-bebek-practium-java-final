@@ -5,30 +5,30 @@ import java.util.Scanner;
 import java.util.*;
 
 
-public class notebook extends ürünözellikleri{
+public class notebook extends productFeature {
 
     Scanner input=new Scanner(System.in);
     private int notebookNumberIDcontrol = 0;
     private static HashSet<Integer> notebookID = new HashSet<>();
     public static LinkedHashMap<Integer,notebook> notebooklist = new LinkedHashMap<>();
     int Ram ;
-    int Depolama;
-    double EkranBoyutu;
+    int Storage;
+    double screenSize;
 
-    public notebook(String MarkaÝsmi, int Markaid, int ürünid, String ürünadý, int ürünbirimfiyat, int ürünindirimoraný, int ürünstokmiktarý, int Ram, int depolama, double ekranBoyutu){
-        super(MarkaÝsmi,Markaid,ürünid,ürünadý,ürünbirimfiyat,ürünindirimoraný,ürünstokmiktarý);
+    public notebook(String brandName, int brandID, int productId, String productName, int productUnitPrice, int productDiscountRatio, int ürünstokmiktarý, int Ram, int storage, double screenSize){
+        super(brandName, brandID, productId, productName, productUnitPrice, productDiscountRatio,ürünstokmiktarý);
         this.Ram=Ram;
-        this.Depolama=depolama;
-        this.EkranBoyutu=ekranBoyutu;
+        this.Storage = storage;
+        this.screenSize = screenSize;
     }
     public notebook(){
     }
     @Override
     public void menu(){
-        System.out.println("1 - Notebooklarý listele" + "\n" +
-                "2 - Notebook ekle" + "\n" +
-                "3 - Notebook sil" + "\n" +
-                "4 - Notebooklarý ID ye göre filtreleme");
+        System.out.println("1 - Notebook List" + "\n" +
+                "2 - Add Notebook" + "\n" +
+                "3 - Erase Notebook" + "\n" +
+                "4 - Filter Notebook by Id");
         int number = input.nextInt();
 
         switch (number){
@@ -46,99 +46,97 @@ public class notebook extends ürünözellikleri{
                 break;
         }
     }
-
     public void control(int control){
         while (notebookID.contains(control)){
-            System.out.println("bu ýd zaten kullanlýyor. tekrar ýd giriniz");
+            System.out.println("There is a product in this id! Please enter another id number.");
             control=input.nextInt();
         }
         notebookID.add(control);
     }
     public void addProduct() {
-        System.out.println("Ürün ýd'si giriniz:");
-        ürünid=input.nextInt();
-        control(ürünid);
+        System.out.println("Enter Notebook Id:");
+        productId =input.nextInt();
+        control(productId);
 
-        System.out.print("Ürünün fiyatýný giriniz: ");
-        ürünbirimfiyat = input.nextInt();
+        System.out.print("Enter unit Price: ");
+        productUnýtPrice = input.nextInt();
 
-        System.out.print("Ürünün indirim oranýný giriniz: ");
-        ürünindirimoraný = input.nextInt();
+        System.out.print("Enter Discount Ratio: ");
+        productDiscountRatio = input.nextInt();
 
-        System.out.print("Ürünün stoðunu giriniz: ");
-        ürünstokmiktarý= input.nextInt();
+        System.out.print("Enter Stock Quantity: ");
+        productStockQuantity = input.nextInt();
 
-        System.out.print("Ürünün ismini giriniz: ");
-        ürünadý= input.nextLine();
-        ürünadý=input.nextLine();
+        System.out.print("Enter Product Name: ");
+        productName = input.nextLine();
+        productName =input.nextLine();
 
-        System.out.print("Ürünün Markasýný seçiniz");
-        for (brand b : brand.markalistele) {
-            System.out.print(b.getMarkaÝsmi() + " ");
+        System.out.print("Enter Product Brand");
+        for (brand b : brand.showBrandlist) {
+            System.out.print(b.getBrandName() + " ");
         }
-        setMarkaÝsmi(input.nextLine());
+        setBrandName(input.nextLine());
 
-        System.out.print("Ürünün ramini giriniz: ");
+        System.out.print("Enter RAM: ");
         Ram = input.nextInt();
 
-        System.out.print("Ürünün depolama alan?n? giriniz: ");
-        Depolama = input.nextInt();
+        System.out.print("Enter Notebook Memory: ");
+        Storage = input.nextInt();
 
-        System.out.print("Ürünün ekran boyutunu giriniz: ");
-        EkranBoyutu = input.nextDouble();
+        System.out.print("Enter Screen Size: ");
+        screenSize = input.nextDouble();
 
-        notebookNumberIDcontrol = ürünid;
+        notebookNumberIDcontrol = productId;
 
-        notebooklist.put(notebookNumberIDcontrol, new notebook(getMarkaÝsmi(), getMarkaid(), ürünid, ürünadý, ürünbirimfiyat, ürünindirimoraný, ürünstokmiktarý, Ram, Depolama,EkranBoyutu))  ;
+        notebooklist.put(notebookNumberIDcontrol, new notebook(getBrandName(), getBrandId(), productId, productName, productUnýtPrice, productDiscountRatio, productStockQuantity, Ram, Storage, screenSize))  ;
         show();
     }
     public void show() {
-        System.out.println("Notebook listesi");
+        System.out.println("Notebook List");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("| ID    | Ürün Adý           | Fiyatý          | Markasý         | Stoðu        | Ýndirim Oraný      | RAM    | Ekran Boyutu      | Hafýzasý   |");
+        System.out.println("| Product Id | Product Name  | Product Price | Brand    | Product Stock Quantity  | Product Discount Quantity  | RAM    | Screen Size  | Memory   |");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------");
 
         for (notebook notebookkk : notebooklist.values()) {
-            System.out.printf("| %-2s | %-22s | %-12s | %-15s | %-12s | %-18s | %-6s | %-17s | %-10s | \n",
-                    +notebookkk.getÜrünid(),
-                    notebookkk.getÜrünadý(),
-                    notebookkk.getÜrünbirimfiyat(),
-                    notebookkk.getMarkaÝsmi(),
-                    notebookkk.getÜrünstokmiktarý(),
-                    notebookkk.getÜrünindirimoraný(),
+            System.out.printf("| %-10s | %-13s | %-13s | %-8s | %-23s | %-26s | %-6s | %-12s | %-9s | \n",
+                    +notebookkk.getProductId(),
+                    notebookkk.getProductName(),
+                    notebookkk.getProductUnýtPrice(),
+                    notebookkk.getBrandName(),
+                    notebookkk.getProductStockQuantity(),
+                    notebookkk.getProductDiscountRatio(),
                     notebookkk.getRam(),
-                    notebookkk.getEkranBoyutu(),
-                    notebookkk.getDepolama());
+                    notebookkk.getScreenSize(),
+                    notebookkk.getStorage());
         }
     }
-
     public void delete(){
-        System.out.println("Hangi ürünü silecekseniz ID'sini giriniz:");
+        System.out.println("Enter the product id of which phone you will delete.");
         int number=input.nextInt();
         notebooklist.remove(number);
         notebookID.remove(number);
         show();
     }
     public void search(){
-        System.out.println("Arayacaðýnýz id:");
+        System.out.println("Please Enter the Id which you want searching.");
         int number=input.nextInt();
         if(notebookID.contains(number)){
             System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------");
-            System.out.println("| ID | Ürün Adý                  | Fiyatý          | Markasý         | Stoðu        | Ýndirim Oraný      | RAM    | Ekran Boyutu      | Hafýzasý   |");
+            System.out.println("| Product Id | Product Name   | Product Price  | Product Brand  | Product Stock  | Product Discount  | RAM    | Screen Size  | Memory   |");
             System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------");
 
-            System.out.printf("| %-2s | %-25s | %-15s | %-15s | %-12s | %-18s | %-6s | %-17s | %-10s | \n",
-                    notebooklist.get(number).getÜrünid(),
-                    notebooklist.get(number).getÜrünadý(),
-                    notebooklist.get(number).getÜrünbirimfiyat(),
-                    notebooklist.get(number).getMarkaÝsmi(),
-                    notebooklist.get(number).getÜrünstokmiktarý(),
-                    notebooklist.get(number).getÜrünindirimoraný(),
+            System.out.printf("| %-10s | %-14s | %-14s | %-14s | %-14s | %-17s | %-6s | %-12s | %-8s | \n",
+                    notebooklist.get(number).getProductId(),
+                    notebooklist.get(number).getProductName(),
+                    notebooklist.get(number).getProductUnýtPrice(),
+                    notebooklist.get(number).getBrandName(),
+                    notebooklist.get(number).getProductStockQuantity(),
+                    notebooklist.get(number).getProductDiscountRatio(),
                     notebooklist.get(number).getRam(),
-                    notebooklist.get(number).getEkranBoyutu(),
-                    notebooklist.get(number).getDepolama());
+                    notebooklist.get(number).getScreenSize(),
+                    notebooklist.get(number).getStorage());
         }else{
-            System.out.println("Böyle bir ürün yoktur.");
+            System.out.println("There is no product registered in this Id.");
         }
     }
     public int getRam() {
@@ -149,17 +147,17 @@ public class notebook extends ürünözellikleri{
         Ram = ram;
     }
 
-    public int getDepolama() {
-        return Depolama;
+    public int getStorage() {
+        return Storage;
     }
 
-    public void setDepolama(int depolama) {
-        Depolama = depolama;
+    public void setStorage(int storage) {
+        Storage = storage;
     }
-    public double getEkranBoyutu() {
-        return EkranBoyutu;
+    public double getScreenSize() {
+        return screenSize;
     }
-    public void setEkranBoyutu(double ekranBoyutu) {
-        EkranBoyutu = ekranBoyutu;
+    public void setScreenSize(double screenSize) {
+        this.screenSize = screenSize;
     }
 }
