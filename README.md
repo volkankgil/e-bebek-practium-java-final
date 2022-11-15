@@ -1,6 +1,6 @@
-<strong># e-bebek-practium-java-final</strong>
+<strong style="font-size:larger";># e-bebek-practium-java-final</strong>
 
-PatikaStore
+<strong>PatikaStore</strong>
 
 
 Patika ekibi elektronik eşyaların satıldığı bir sanal bir mağaza açmaya karar verdi ve bu mağazanın ürün yönetim sistemini siz patika gönüllülerinden yapmasını ekliyor.
