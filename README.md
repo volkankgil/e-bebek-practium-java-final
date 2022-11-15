@@ -2,6 +2,9 @@
 
 <strong>PatikaStore</strong>
 
+![Untitled Diagram drawio](https://user-images.githubusercontent.com/104678474/201935398-f48f18fa-fa73-4137-8fd3-e64d17b19413.png)
+
+
 
 Patika ekibi elektronik eşyaların satıldığı bir sanal bir mağaza açmaya karar verdi ve bu mağazanın ürün yönetim sistemini siz patika gönüllülerinden yapmasını ekliyor.
 
