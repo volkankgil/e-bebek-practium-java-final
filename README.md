@@ -1,4 +1,4 @@
-str<># e-bebek-practium-java-final</str>
+<strong># e-bebek-practium-java-final</strong>
 
 PatikaStore
 
